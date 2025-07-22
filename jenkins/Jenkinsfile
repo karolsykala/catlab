@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t myapp:latest ./myapp'
+                sh 'docker build -t myapp:latest ./app'
               }
           }
         stage('Deploy To k3s') {
