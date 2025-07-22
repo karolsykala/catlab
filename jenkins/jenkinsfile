@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+    stages {
+        stage('Clone') {
+            steps {
+                git url: 'https://github.com/karolsykala/catlab'
+              }
+          }
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t myapp:latest ./myapp'
+              }
+          }
+        stage('Deploy To k3s') {
+            steps {
+                sh 'kubectl apply -f ./k3s/deployment.yaml'
+                sh 'kubectl apply -f ./k3s/service.yaml'
+              }
+          }
+      }
+  }
