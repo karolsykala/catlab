@@ -1,0 +1,4 @@
+variable "uwu" {
+    default = "nya"
+    
+}
